@@ -6,7 +6,7 @@ interface Props {
 
 export default function Listings(props: Props) {
   return (
-    <li>
+    <li className="pb-3">
       {props.link ? (
         <a href={props.link}>
           {props.emoji} {props.text}

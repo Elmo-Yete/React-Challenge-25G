@@ -11,7 +11,7 @@ export default function Home() {
         <NavBar />
       </header>
       <main className="flex columns-3 bg-dev-background px-5">
-        <aside className="flex flex-col w-1/3">
+        <aside className="flex flex-col w-1/3 ">
           <LeftListing />
         </aside>
         <section>

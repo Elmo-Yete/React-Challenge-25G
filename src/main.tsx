@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
+import Post from "./pages/Post";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/post",
-    element: <h5>Aqui en teoria va el post en especifico</h5>,
+    element: <Post />,
   },
 ]);
 
