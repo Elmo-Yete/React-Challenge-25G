@@ -1,9 +1,11 @@
 export default function NavPills() {
   return (
-    <article className="flex flex-row">
-      <div>
+    <article>
+      <div className="flex flex-row py-5 gap-5">
         <div>
-          <button type="button">Relevant</button>
+          <button type="button" className="font-bold">
+            Relevant
+          </button>
         </div>
         <div>
           <button type="button">Latest</button>

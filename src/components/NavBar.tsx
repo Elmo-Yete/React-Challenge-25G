@@ -17,7 +17,7 @@ export default function NavBar() {
       </div>
       <div className="navbar-login text-black flex">
         <div className="flex justify-end text-slate-600">
-          <Link to="/">Log in</Link>
+          <Link to="/login">Log in</Link>
         </div>
         <div className="border-2 border-cyan-700/20 text-cyan-600 rounded-lg px-2 py-1 font-bold">
           <Link to="/register">Create account</Link>
