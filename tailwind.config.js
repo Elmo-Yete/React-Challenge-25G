@@ -5,6 +5,7 @@ export default {
     extend: {
       colors: {
         "dev-background": "#F5F5F5",
+        "dev-to-card-color": "#FFFFFF",
       },
     },
   },

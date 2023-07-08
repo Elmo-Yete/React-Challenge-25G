@@ -2,15 +2,19 @@ import NavBar from "../components/NavBar";
 import PostCard from "../components/PostCard";
 import Footer from "../components/Footer";
 import RightListing from "../components/RightListing";
+import NavPills from "../components/NavPills";
 export default function Home() {
   return (
     <>
       <header className="relative">
         <NavBar />
       </header>
-      <main className="flex columns-3 bg-dev-background">
+      <main className="flex columns-3 bg-dev-background px-5">
         <aside className="flex w-1/3">#</aside>
-        <PostCard />
+        <section>
+          <NavPills />
+          <PostCard />
+        </section>
         <aside className="flex w-1/3">
           <RightListing />
         </aside>
