@@ -3,6 +3,7 @@ import PostCard from "../components/PostCard";
 import Footer from "../components/Footer";
 import RightListing from "../components/RightListing";
 import NavPills from "../components/NavPills";
+import LeftListing from "../components/LeftListing";
 export default function Home() {
   return (
     <>
@@ -10,7 +11,9 @@ export default function Home() {
         <NavBar />
       </header>
       <main className="flex columns-3 bg-dev-background px-5">
-        <aside className="flex w-1/3">#</aside>
+        <aside className="flex w-1/3">
+          <LeftListing />
+        </aside>
         <section>
           <NavPills />
           <PostCard />
