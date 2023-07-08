@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 export default function NavBar() {
   return (
-    <nav className="navbar bg-white flex ps-5 py-2">
+    <nav className="navbar bg-white flex ps-5 py-2 sticky top-0 w-screen">
       <div className="navbar-logo w-12">
         <Link to="/">
           <img src="../src/assets/DevLogo.webp" className="w-12" />
@@ -14,7 +14,6 @@ export default function NavBar() {
           className="border-2 border-slate-200/50 rounded-lg h-full w-96 text-black"
           placeholder="  Search..."
         />
-        <BsSearch />
       </div>
       <div className="navbar-login text-black flex">
         <div className="flex justify-end text-slate-600">

@@ -3,11 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
-
+import Home from "./pages/Home";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <h1>Home paige con los posts</h1>,
+    element: <Home />,
   },
   {
     path: "/login",

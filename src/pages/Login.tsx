@@ -108,13 +108,17 @@ export default function Login() {
                   </div>
                   <div className="remember-me">
                     <input type="checkbox" />
-                    <label>Remember me</label>
+                    <label className="text-black font-light ps-1">
+                      Remember me
+                    </label>
                   </div>
                   <div className="continue">
                     <button>Continue</button>
                   </div>
                 </form>
-                <p>I forgot my password</p>
+                <p className="text-blue-700 text-center">
+                  I forgot my password
+                </p>
               </div>
             </div>
           </div>
