@@ -14,7 +14,7 @@ export default function PostCard() {
           </div>
           <div className="card-content p-5">
             <div className="flex flex-wrap h-3/6">
-              <div className="w-[3rem]  profile-picture">
+              <div className="w-[3rem] profile-picture">
                 <div>
                   <a>
                     <img
