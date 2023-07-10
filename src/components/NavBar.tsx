@@ -19,9 +19,12 @@ export default function NavBar() {
         <div className="flex justify-end text-slate-600">
           <Link to="/login">Log in</Link>
         </div>
-        <div className="border-2 border-cyan-700/20 text-cyan-600 rounded-lg px-2 py-1 font-bold">
+        <div className="border-2 border-cyan-700/20 text-cyan-700/70 rounded-lg px-2 py-1 font-bold">
           <Link to="/register">Create account</Link>
         </div>
+      </div>
+      <div className="border-2 border-cyan-700/20 text-cyan-700/70 rounded-lg px-2 py-1 font-bold">
+        <Link to="/create-post">Create Post</Link>
       </div>
     </nav>
   );

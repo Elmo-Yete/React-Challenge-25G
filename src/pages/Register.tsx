@@ -32,13 +32,13 @@ export default function Login() {
           localStorage.setItem("token", response.token);
           // ? const token = localStorage.getItem("token");
           // ? localStorage.removeItem("token")
-          navigate("/dashboard");
+          navigate("/");
         } else {
-          toast.warn("Barrio equivocado socio ☠");
+          toast.warn("Usuario no encontrado");
         }
       })
       .catch(() => {
-        toast.error("no jalo el fetch");
+        toast.error("Error en el fetch");
       });
   }
 
@@ -88,8 +88,7 @@ export default function Login() {
                 <form
                   onSubmit={handleSubmit((data) => {
                     console.log(data);
-                  })}
-                >
+                  })}>
                   <span className="text-black">Email</span>
                   <div className="email text-black">
                     <input
@@ -113,7 +112,9 @@ export default function Login() {
                     </label>
                   </div>
                   <div className="continue">
-                    <button>Continue</button>
+                    <button type="submit" className="bg-button-color">
+                      Continue
+                    </button>
                   </div>
                 </form>
                 <p className="text-blue-700 text-center">

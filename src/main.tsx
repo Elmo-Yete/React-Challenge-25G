@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Post from "./pages/Post";
+import Create from "./pages/CreateP";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/create-post",
-    element: <h4>Aqui se va a crear el post</h4>,
+    element: <Create />,
   },
   {
     path: "/post",
