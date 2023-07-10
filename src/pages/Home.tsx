@@ -5,19 +5,22 @@ import RightListing from "../components/RightListing";
 import NavPills from "../components/NavPills";
 import LeftListing from "../components/LeftListing";
 import "react-toastify/dist/ReactToastify.css";
-function Fetch() {
-  fetch("http://localhost:8080/post")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("esto es data:", data);
-    })
-    .catch((error) => {
-      console.log("error", error);
-    });
-}
-Fetch();
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/post")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("estos son los posts", data);
+        setPosts(data);
+      })
+      .catch((error) => {
+        console.error("Error en:", error);
+      });
+  }, []);
   return (
     <>
       <header className="relative">
@@ -29,7 +32,9 @@ export default function Home() {
         </aside>
         <section>
           <NavPills />
-          <PostCard />
+          {posts.map((post) => (
+            <PostCard key={post._id} post={post} />
+          ))}
         </section>
         <aside className="flex w-1/3">
           <RightListing />
