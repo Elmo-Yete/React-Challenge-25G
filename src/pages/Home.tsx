@@ -8,19 +8,17 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<any>([]);
 
   useEffect(() => {
     fetch("http://localhost:8080/post")
       .then((response) => response.json())
-      .then((data) => {
-        console.log("estos son los posts", data);
-        setPosts(data);
-      })
+      .then((response) => setPosts(response.data))
       .catch((error) => {
         console.error("Error en:", error);
       });
   }, []);
+  console.log(posts);
   return (
     <>
       <header className="relative">
@@ -32,8 +30,8 @@ export default function Home() {
         </aside>
         <section>
           <NavPills />
-          {posts.map((post) => (
-            <PostCard key={post._id} post={post} />
+          {posts.map((post: any, index) => (
+            <PostCard key={`index${index}`} post={post} />
           ))}
         </section>
         <aside className="flex w-1/3">
