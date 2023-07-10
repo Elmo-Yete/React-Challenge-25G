@@ -4,6 +4,19 @@ import Footer from "../components/Footer";
 import RightListing from "../components/RightListing";
 import NavPills from "../components/NavPills";
 import LeftListing from "../components/LeftListing";
+import "react-toastify/dist/ReactToastify.css";
+function Fetch() {
+  fetch("http://localhost:8080/post")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("esto es data:", data);
+    })
+    .catch((error) => {
+      console.log("error", error);
+    });
+}
+Fetch();
+
 export default function Home() {
   return (
     <>
