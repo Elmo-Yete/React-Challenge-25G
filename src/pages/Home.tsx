@@ -18,11 +18,11 @@ export default function Home() {
         console.error("Error en:", error);
       });
   }, []);
-  console.log(posts);
+  console.log("esto es posts", posts);
   return (
     <>
       <header className="relative">
-        <NavBar />
+        <NavBar props={posts} />
       </header>
       <main className="flex columns-3 bg-dev-background px-5">
         <aside className="flex flex-col w-1/3 ">

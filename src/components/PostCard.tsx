@@ -18,7 +18,7 @@ interface PostProps {
 }
 
 export default function PostCard(post: PostProps) {
-  console.log("estos son los posts para la card", post);
+  const isTag = post.post.tags;
   return (
     <>
       <section className="flex flex-row full-card  rounded-lg bg-dev-to-card-color my-5">
@@ -36,18 +36,18 @@ export default function PostCard(post: PostProps) {
               <div className="flex flex-wrap h-3/6">
                 <div className="w-[3rem] profile-picture">
                   <div>
-                    {/* <a>
+                    <a>
                       <img
                         src={post.post.userCreatorId.profilePicture}
                         alt="imagen de usuario"
                         className="rounded-full w-full"></img>
-                    </a> */}
+                    </a>
                   </div>
                 </div>
                 <div className=" gap-1 ps-2 mt-1 items-center user-creator">
                   <div className="flex">
-                    <p className="font-semibold text-sm ">
-                      {/* {post.userCreatorId.name} */}
+                    <p className="font-semibold text-sm pe-2">
+                      {`${post.post.userCreatorId.name} for`}
                     </p>
                     <p className="font-semibold text-sm ">
                       AWS Community Services
@@ -61,22 +61,29 @@ export default function PostCard(post: PostProps) {
                   {post.post.title}
                 </h2>
                 <div className="flex gap-5 ms-10 py-2 post-tags text-sm">
-                  <a>
-                    <span className="text-amber-400">#</span>tag1
-                  </a>
-                  <a>
-                    <span className="text-green-800">#</span>tag2
-                  </a>
-                  <a>
-                    <span className="text-violet-700">#</span>tag3
-                  </a>
+                  {isTag ? (
+                    <>
+                      <a className="">{post.post.tags[0]}</a>
+                      <a className="">{post.post.tags[1]}</a>
+                      <a className="">{post.post.tags[2]}</a>
+                    </>
+                  ) : (
+                    <>
+                      <div></div>
+                    </>
+                  )}
                 </div>
                 <div className="flex ms-10 py-4 justify-between emojis-comments text-sm">
                   <div className="flex gap-5">
                     <a href="#" className="emojis-comments__colection">
-                      <div className="emojis-comments__colection--emojis">
-                        <span className="bg-slate-300  rounded-full">❤</span>
-                        <span className="ps-3">{post.post.heartReactions}</span>
+                      <div className="emojis-comments__colection--emojis flex">
+                        <span className="bg-slate-300  rounded-full p-1">
+                          <img
+                            src="../src/assets/icons/love.svg"
+                            className="w-4"
+                          />
+                        </span>
+                        <span className="ps-3">{`${post.post.heartReactions} reacciones`}</span>
                       </div>
                     </a>
                     <a className="emojis-comments__comments">

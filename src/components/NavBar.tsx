@@ -1,6 +1,24 @@
 import { Link } from "react-router-dom";
 
-export default function NavBar() {
+interface Props {
+  content: string;
+  date: string;
+  heartReactions: string;
+  image: string;
+  marks: string;
+  tags: [string];
+  time: number;
+  title: string;
+  userCreatorId: {
+    name: string;
+    profilePicture: string;
+    _id: string;
+  };
+  _id: string;
+}
+
+export default function NavBar(props: Props) {
+  console.log(props);
   const token = localStorage.getItem("token");
   return (
     <nav className="bg-[#FFFFFF] flex items-center w-auto h-auto px-32 gap-2 p-[6px] place-content-between">
@@ -28,7 +46,7 @@ export default function NavBar() {
           <>
             <div className=" border-[1px] border-[#3b49df] rounded-[3px] m-[1px] flex justify-center hover:bg-[#3b49df]">
               <Link
-                to="/Create"
+                to="/create-post"
                 className="m-1 text-[10px] text-[#3b49df] px-1 hover:text-white hover:underline">
                 Create Post
               </Link>
@@ -52,7 +70,10 @@ export default function NavBar() {
             </div>
             <div>
               <a>
-                <img src="" />
+                <img
+                  src={props.props[0].userCreatorId.profilePicture}
+                  className="w-8 rounded-xl"
+                />
               </a>
             </div>
           </>
