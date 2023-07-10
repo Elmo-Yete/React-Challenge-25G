@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Post from "./pages/Post";
 import Create from "./pages/CreateP";
+
 const router = createBrowserRouter([
   {
     path: "/",
