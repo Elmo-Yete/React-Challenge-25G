@@ -28,8 +28,8 @@ export default function Login() {
       .then((response) => response.json())
       .then((response) => {
         console.log("response:", response);
-        if (response?.token) {
-          localStorage.setItem("token", response.token);
+        if (response?.data) {
+          localStorage.setItem("token", response.data);
           // ? const token = localStorage.getItem("token");
           // ? localStorage.removeItem("token")
           navigate("/");
@@ -123,15 +123,14 @@ export default function Login() {
                     Have a password? Continue with your e-mail address
                   </div>
                 </div>
-                <form
-                  onSubmit={handleSubmit((data) => {
-                    console.log(data);
-                  })}>
+                <form onSubmit={handleSubmit(onSubmit)} action="submit">
                   <span className="text-black">Email</span>
                   <div className="email text-black">
                     <input
                       type="email"
-                      {...register("email")}
+                      {...register("email", {
+                        required: { value: true, message: "E-mail required" },
+                      })}
                       className="py-3 border-2 border-slate-400/50 rounded-lg w-full max-h-10"
                     />
                   </div>
@@ -139,7 +138,9 @@ export default function Login() {
                   <div className="password text-black">
                     <input
                       type="password"
-                      {...register("password")}
+                      {...register("password", {
+                        required: { value: true, message: "Password required" },
+                      })}
                       className="py-3 border-2 border-slate-400/50 rounded-lg w-full max-h-10"
                     />
                   </div>
