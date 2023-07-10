@@ -1,8 +1,13 @@
+import NavBar from "../components/NavBar";
 import Leftaside from "../components/post-view/Left-aside";
+import UserCard from "../components/post-view/UserCard";
 export default function Post() {
   return (
     <>
-      <main className="flex columns-3 bg-dev-background  ">
+      <nav>
+        <NavBar />
+      </nav>
+      <main className="flex columns-3 bg-dev-background pt-5">
         <aside className="flex w-1/4 justify-end">
           <Leftaside />
         </aside>
@@ -10,7 +15,10 @@ export default function Post() {
           <article>
             <header>
               <div>
-                <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--eaqnr2Uy--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4p46s581l65x91ng6y2w.jpg" />
+                <img
+                  src="https://res.cloudinary.com/practicaldev/image/fetch/s--eaqnr2Uy--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4p46s581l65x91ng6y2w.jpg"
+                  className="rounded-t-md"
+                />
               </div>
               <div className="flex px-7 pt-5">
                 <div className="w-[3rem] profile-picture">
@@ -32,7 +40,7 @@ export default function Post() {
                   <p className="font-light">7 days ago</p>
                 </div>
               </div>
-              <div className="flex px-7 pt-5">
+              <div className="flex flex-row px-7 pt-5 ">
                 <span className="flex w-7">
                   <img src="../src/assets/icons/red-Heart-Icon.svg" />
                   <p>4</p>
@@ -96,8 +104,8 @@ export default function Post() {
             </div>
           </article>
         </section>
-        <aside className="flex w-1/3">
-          aqui va la card del user que creo el post en teoria
+        <aside className="flex w-1/3 px-5">
+          <UserCard />
         </aside>
       </main>
     </>
