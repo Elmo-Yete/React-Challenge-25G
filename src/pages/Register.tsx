@@ -26,14 +26,14 @@ export default function Login() {
         name: data.name,
         email: data.email,
         password: data.password,
-        profilepic: data.string,
+        profilePicture: data.profilepic,
       }),
     })
       .then((response) => response.json())
       .then((response) => {
         console.log("response:", response);
-        if (response?.data) {
-          localStorage.setItem("token", response.data);
+        if (response?.data._id) {
+          localStorage.setItem("id", response.data._id);
           // ? const token = localStorage.getItem("token");
           // ? localStorage.removeItem("token")
           navigate("/");
