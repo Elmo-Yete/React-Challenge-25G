@@ -69,13 +69,17 @@ export default function Login() {
               </p>
             </div>
             <div className="Logins">
-              <div className="Logins-media flex flex-col my-3">
-                <button className="bg-black p-1"> Continue with Apple</button>
-                <button className="bg-cyan-900 p-1">Continue with Forem</button>
-                <button className="bg-slate-800 p-1">
+              <div className="Logins-media flex flex-col">
+                <button className="bg-black p-2 rounded-md my-2">
+                  Continue with Apple
+                </button>
+                <button className="bg-cyan-900 p-2 rounded-md my-2">
+                  Continue with Forem
+                </button>
+                <button className="bg-slate-800 p-2 rounded-md my-2">
                   Continue with GitHub
                 </button>
-                <button className="bg-sky-500 p-1">
+                <button className="bg-sky-500 p-2 rounded-md my-2">
                   Continue with Twitter
                 </button>
               </div>
@@ -111,10 +115,8 @@ export default function Login() {
                       Remember me
                     </label>
                   </div>
-                  <div className="continue">
-                    <button type="submit" className="bg-button-color">
-                      Continue
-                    </button>
+                  <div className="continue my-5">
+                    <button type="submit">Continue</button>
                   </div>
                 </form>
                 <p className="text-blue-700 text-center">
