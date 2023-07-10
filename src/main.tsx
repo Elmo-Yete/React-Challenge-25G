@@ -8,13 +8,6 @@ import Register from "./pages/Register";
 import Post from "./pages/Post";
 import Create from "./pages/CreateP";
 
-// function fetch(URL, method) {
-//   fetch("http://localhost:8080/post", {
-//     method: "GET",
-//   })
-//   .then((response) => response.json())
-// }
-
 const router = createBrowserRouter([
   {
     path: "/",
