@@ -1,36 +1,18 @@
 import { Link } from "react-router-dom";
 
-interface Props {
-  content: string;
-  date: string;
-  heartReactions: string;
-  image: string;
-  marks: string;
-  tags: [string];
-  time: number;
-  title: string;
-  userCreatorId: {
-    name: string;
-    profilePicture: string;
-    _id: string;
-  };
-  _id: string;
-}
-
-export default function NavBar(props: Props) {
-  console.log(props);
+export default function NavBar() {
   const token = localStorage.getItem("token");
   return (
-    <nav className="bg-[#FFFFFF] flex items-center w-auto h-auto px-32 gap-2 p-[6px] place-content-between">
+    <nav className="bg-[#FFFFFF] flex items-center w-auto px-32 gap-2 p-[6px] place-content-between ">
       <div className="flex gap-1">
         <Link to="/">
           <img
-            className="h-7"
+            className="w-11"
             src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
             alt="DevTo"
           />
         </Link>
-        <div className="border rounded-md w-64 max-w-xs h-7 pb-1 pl-1 hover:border-gray-400 flex justify-between">
+        <div className="border rounded-md w-64 max-w-xs h-7 my-1 pl-1 hover:border-gray-400 flex justify-between">
           <input
             type="text"
             placeholder="Search..."
@@ -47,11 +29,11 @@ export default function NavBar(props: Props) {
             <div className=" border-[1px] border-[#3b49df] rounded-[3px] m-[1px] flex justify-center hover:bg-[#3b49df]">
               <Link
                 to="/create-post"
-                className="m-1 text-[10px] text-[#3b49df] px-1 hover:text-white hover:underline">
+                className="m-1 text-[10px] text-[#3b49df] px-1 hover:text-white hover:underline text-base">
                 Create Post
               </Link>
             </div>
-            <div>
+            <div className="px-2 py-1">
               <a href="#">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,8 +53,8 @@ export default function NavBar(props: Props) {
             <div>
               <a>
                 <img
-                  src={props.props[0].userCreatorId.profilePicture}
-                  className="w-8 rounded-xl"
+                  src="../src/assets/meme.webp"
+                  className="w-7  rounded-full"
                 />
               </a>
             </div>
