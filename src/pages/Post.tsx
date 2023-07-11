@@ -45,24 +45,8 @@ export default function Post() {
                   <img src="../src/assets/icons/red-Heart-Icon.svg" />
                   <p>4</p>
                 </span>
-                <span className="flex w-7">
-                  <img src="../src/assets/icons/unicorn-Icon.svg" />
-                  <p>4</p>
-                </span>
-                <span className="flex w-7">
-                  <img src="../src/assets/icons/crazy-Man-Icon.svg" />
-                  <p>4</p>
-                </span>
-                <span className="flex w-7">
-                  <img src="../src/assets/icons/raise-.svg" />
-                  <p>4</p>
-                </span>
-                <span className="flex w-7">
-                  <img src="../src/assets/icons/fire-Icon.svg" />
-                  <p>4</p>
-                </span>
               </div>
-              <h1 className="px-7 pt-5 font-bold text-5xl">
+              <h1 className="px-7 pt-5 font-bold text-5xl w-full">
                 #DEVDiscuss: Is Threads Truly Decentralized?
               </h1>
               <div className="px-7 pt-5">
