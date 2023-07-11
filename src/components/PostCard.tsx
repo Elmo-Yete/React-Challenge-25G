@@ -38,7 +38,7 @@ export default function PostCard(post: PostProps) {
                   <div>
                     <a>
                       <img
-                        src={post.post.userCreatorId.profilePicture}
+                        src="https://randomuser.me/api/portraits/men/78.jpg"
                         alt="imagen de usuario"
                         className="rounded-full w-full"></img>
                     </a>
@@ -46,9 +46,7 @@ export default function PostCard(post: PostProps) {
                 </div>
                 <div className=" gap-1 ps-2 mt-1 items-center user-creator">
                   <div className="flex">
-                    <p className="font-semibold text-sm pe-2">
-                      {`${post.post.userCreatorId.name} for`}
-                    </p>
+                    <p className="font-semibold text-sm pe-2">User Test 1</p>
                     <p className="font-semibold text-sm ">
                       AWS Community Services
                     </p>
