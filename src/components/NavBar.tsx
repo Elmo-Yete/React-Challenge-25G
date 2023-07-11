@@ -61,17 +61,17 @@ export default function NavBar() {
           </>
         ) : (
           <>
-            <div>
+            <div className="pt-1">
               <Link
                 to="/Login"
-                className="m-2 text-[#404040] text-[10px] hover:bg-slate-100 p-[6px] rounded-[3px]  hover:text-[#3b49df] text hover:underline ">
+                className="m-7 text-black text-base hover:bg-slate-100 rounded-[3px]  hover:text-blue-dev text hover:underline ">
                 Log in
               </Link>
             </div>
-            <div className=" border-[1px] border-[#3b49df] rounded-[3px] m-[1px] flex justify-center hover:bg-[#3b49df] ">
+            <div className=" border-[1px] border-blue-dev rounded-md  flex justify-center hover:bg-blue-dev ">
               <Link
                 to="/Register"
-                className="m-1 text-[10px] text-[#3b49df] px-1 hover:text-white hover:underline">
+                className="m-1 text-base text-blue-dev px-1 hover:text-white hover:underline">
                 Create account
               </Link>
             </div>
