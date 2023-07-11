@@ -2,7 +2,7 @@ import Listings from "../micro-components/Listings";
 import Hashtags from "../micro-components/Hashtags";
 export default function LeftListing() {
   return (
-    <nav className="w-54 p-6 text-base">
+    <nav className="w-56 p-6 text-lg">
       <div className="first-list">
         <ul className="">
           <Listings emoji="🏠" text="Home" link="/" />
