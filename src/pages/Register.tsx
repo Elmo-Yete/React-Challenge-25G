@@ -36,7 +36,7 @@ export default function Login() {
           localStorage.setItem("id", response.data._id);
           // ? const token = localStorage.getItem("token");
           // ? localStorage.removeItem("token")
-          navigate("/");
+          navigate("/login");
         } else {
           toast.warn("Usuario no encontrado");
         }
@@ -124,7 +124,7 @@ export default function Login() {
               <div className="Logins-data">
                 <div>
                   <div className="text-black text-center">
-                    Have a password? Continue with your e-mail address
+                    Continue with e-mail
                   </div>
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -133,7 +133,7 @@ export default function Login() {
                     <input
                       type="text"
                       {...register("name")}
-                      className="py-3 border-2 border-slate-400/50 rounded-lg w-full max-h-10"
+                      className="py-3 border-2 border-slate-400/50 rounded-lg w-full max-h-10 "
                     />
                   </div>
                   <span className="text-black">Email</span>
@@ -161,12 +161,12 @@ export default function Login() {
                       placeholder="Insert URL"
                     />
                   </div>
-                  <div className="remember-me">
+                  {/* <div className="remember-me"> // si me registro tengo que loguearme despues por lo que no hay sentido de mantener el remember me
                     <input type="checkbox" />
                     <label className="text-black font-light ps-1">
                       Remember me
                     </label>
-                  </div>
+                  </div> */}
                   <div className="continue my-5">
                     <button
                       type="submit"
@@ -175,9 +175,6 @@ export default function Login() {
                     </button>
                   </div>
                 </form>
-                <p className="text-blue-700 text-center">
-                  I forgot my password
-                </p>
               </div>
             </div>
           </div>

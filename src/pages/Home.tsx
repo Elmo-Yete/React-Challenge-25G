@@ -24,7 +24,7 @@ export default function Home() {
       <header className="relative">
         <NavBar props={posts} />
       </header>
-      <main className="flex columns-3 bg-dev-background px-5">
+      <main className="flex columns-3 mx-[19.43rem] gap-3 p-5 bg-dev-background ">
         <aside className="flex w-1/3 ">
           <LeftListing />
         </aside>

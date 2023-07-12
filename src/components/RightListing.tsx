@@ -1,6 +1,6 @@
 export default function RightListing() {
   return (
-    <div className=" flex-row w-80 border rounded-md h-auto justify-between m-3">
+    <div className=" flex-row w-80 border rounded-md h-fit justify-between bg-white">
       <header className="flex align-middle justify-between pb-2 m-2 border-b-2">
         <h3 className="font-bold text-lg">Listings</h3>
         <div>
@@ -49,8 +49,7 @@ export default function RightListing() {
         </div>
         <a
           href=""
-          className="flex align-middle justify-center font-semibold text-sm pt-2 border-t-2"
-        >
+          className="flex align-middle justify-center font-semibold text-sm pt-2 border-t-2">
           Create a Listing
         </a>
       </div>

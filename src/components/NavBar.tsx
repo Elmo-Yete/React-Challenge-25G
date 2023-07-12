@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function NavBar() {
   const token = localStorage.getItem("token");
   return (
-    <nav className="bg-[#FFFFFF] flex items-center w-auto px-32 gap-2 p-[6px] place-content-between ">
+    <nav className="bg-[#FFFFFF] flex w-auto px-20 gap-60 p-[6px] place-content-around ">
       <div className="flex gap-1">
         <Link to="/">
           <img
@@ -16,10 +16,13 @@ export default function NavBar() {
           <input
             type="text"
             placeholder="Search..."
-            className="font-light text-sm placeholder:text-gray-700 w-full"
+            className="font-light text-sm placeholder:text-gray-700 w-full focus:outline-none focus:ring-0"
           />
-          <span className="material-symbols-outlined text-black font-light text-base hover:bg-slate-100 hover:text-blue-800 cursor-pointer pl-1 pr-6 w-6 h-[26px] hover:ring[1px] hover:rounded-md">
-            🔍
+          <span className=" text-black font-light text-base hover:bg-slate-100 hover:text-blue-800 cursor-pointer w-11  hover:ring[1px] hover:rounded-md">
+            <img
+              src="../src/assets/icons/search-svgrepo-com.svg"
+              className="w-7/12 ms-2 m-[.2rem]"
+            />
           </span>
         </div>
       </div>
@@ -29,7 +32,7 @@ export default function NavBar() {
             <div className=" border-[1px] border-[#3b49df] rounded-[3px] m-[1px] flex justify-center hover:bg-[#3b49df]">
               <Link
                 to="/create-post"
-                className="m-1 text-[10px] text-[#3b49df] px-1 hover:text-white hover:underline text-base">
+                className="m-1 text-[10px] text-[#3b49df] px-2 hover:text-white hover:underline text-base">
                 Create Post
               </Link>
             </div>
@@ -54,17 +57,17 @@ export default function NavBar() {
               <a>
                 <img
                   src="../src/assets/meme.webp"
-                  className="w-7  rounded-full"
+                  className="w-8 rounded-2xl"
                 />
               </a>
             </div>
           </>
         ) : (
           <>
-            <div className="pt-1">
+            <div className="pt-[0.2rem]">
               <Link
                 to="/Login"
-                className="m-7 text-black text-base hover:bg-slate-100 rounded-[3px]  hover:text-blue-dev text hover:underline ">
+                className="m-7 text-black text-base hover:bg-slate-100 rounded-[3px] p-2  hover:text-blue-dev text hover:underline ">
                 Log in
               </Link>
             </div>

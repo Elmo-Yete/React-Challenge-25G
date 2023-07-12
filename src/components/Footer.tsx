@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="flex w-screen h-fit bg-[#e5e5e5] justify-center align-middle  bottom-0">
+    <div className="flex  h-fit bg-[#e5e5e5] justify-center align-middle  bottom-0">
       <div className="flex-col justify-center align-middle h-auto">
         <div className="flex justify-center pt-12 align-middle">
           <p className="font-normal text-sm">

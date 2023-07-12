@@ -132,7 +132,7 @@ export default function Login() {
                       {...register("email", {
                         required: { value: true, message: "E-mail required" },
                       })}
-                      className="py-3 border-2 border-slate-400/50 rounded-lg w-full max-h-10"
+                      className="py-3 border-2 border-slate-400/50 rounded-lg w-full max-h-10 "
                     />
                   </div>
                   <span className="text-black">Password</span>

@@ -21,7 +21,7 @@ export default function PostCard(post: PostProps) {
   const isTag = post.post.tags;
   return (
     <>
-      <section className="flex flex-row full-card  rounded-lg bg-dev-to-card-color my-5">
+      <section className="flex flex-row rounded-xl bg-dev-to-card-color mb-5">
         <Link to="/Post">
           <a className="ancor-card">
             <div className="img-top">
@@ -34,8 +34,8 @@ export default function PostCard(post: PostProps) {
             </div>
             <div className="card-content p-5">
               <div className="flex flex-wrap h-3/6">
-                <div className="w-[3rem] profile-picture">
-                  <div>
+                <div className="w-[2.1rem] profile-picture">
+                  <div className="flex pt-2.5">
                     <a>
                       <img
                         src="https://randomuser.me/api/portraits/men/78.jpg"
@@ -58,7 +58,7 @@ export default function PostCard(post: PostProps) {
                 <h2 className="font-extrabold text-3xl mx-9  pb-3 ">
                   {post.post.title}
                 </h2>
-                <div className="flex gap-5 ms-10 py-2 post-tags text-sm">
+                <div className="flex gap-5 ms-10 py-1 post-tags text-sm">
                   {isTag ? (
                     <>
                       <a className="">{post.post.tags[0]}</a>
@@ -81,7 +81,7 @@ export default function PostCard(post: PostProps) {
                             className="w-4"
                           />
                         </span>
-                        <span className="ps-3">{`${post.post.heartReactions} reacciones`}</span>
+                        <span className="ps-3">{`${post.post.heartReactions} reactions`}</span>
                       </div>
                     </a>
                     <a className="emojis-comments__comments">
