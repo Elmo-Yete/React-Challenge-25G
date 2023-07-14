@@ -28,11 +28,9 @@ export default function Login() {
     })
       .then((response) => response.json())
       .then((response) => {
-        // console.log("response:", response);
+        console.log("response:", response);
         if (response?.data) {
           localStorage.setItem("token", response.data);
-          // ? const token = localStorage.getItem("token");
-          // ? localStorage.removeItem("token")
           navigate("/");
         } else {
           toast.warn("No se encontro al usuario");

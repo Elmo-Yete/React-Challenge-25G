@@ -14,12 +14,18 @@ interface PostData {
 }
 
 export default function Create() {
+  const [reactionsCount, setReactionsCount] = useState(0);
   function onSubmit(data: PostData) {
     const userId = localStorage.getItem("id");
+    console.log(userId);
     const userToken = localStorage.getItem("token");
+    const currentDate = new Date();
     fetch("http://localhost:8080/post", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+      },
       body: JSON.stringify({
         userCreatorId: userId,
         title: data.title,
@@ -27,7 +33,8 @@ export default function Create() {
         image: data.image,
         time: data.time,
         tags: data.tags,
-        date: data.date,
+        date: currentDate.toISOString(),
+        heartReactions: reactionsCount,
       }),
     }).catch((error) => {
       alert(error);
@@ -56,7 +63,7 @@ export default function Create() {
       </nav>
       <main className="bg-dev-background flex flex-col justify-start items-center ">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <header className="w-5/12 bg-dev-to-card-color p-7 rounded-lg">
+          <header className=" bg-dev-to-card-color p-7 rounded-lg">
             <div className="input-img py-2">
               <input
                 type="text"
@@ -79,6 +86,14 @@ export default function Create() {
                 placeholder="Add up to 4 tags"
                 className="font-thin focus:outline-none focus:ring-0"
                 {...register("tags")}
+              />
+            </div>
+            <div>
+              <input
+                type="number"
+                placeholder="Time to read"
+                className="font-thin focus:outline-none focus:ring-0"
+                {...register("time")}
               />
             </div>
           </header>
@@ -112,17 +127,16 @@ export default function Create() {
             </div>
             <div className="w-1/12 text-center font-bold">:</div>
           </section>
-          <article className="w-5/12 bg-dev-background ">
+          <article className=" bg-dev-background ">
             <section>
               <textarea
                 className="w-full h-96 font-light p-2 focus:outline-none focus:ring-0"
-                {...register("post")}
+                {...register("content")}
                 placeholder="Write your post content here..."></textarea>
             </section>
           </article>
-          <div className="bg-button-color p-1.5 text-white rounded-lg">
+          <div className="bg-button-color p-1.5 text-white rounded-lg w-20 text-center">
             <button type="submit">Publish</button>
-            {/* <input {...register("post")}/> */}
           </div>
         </form>
       </main>

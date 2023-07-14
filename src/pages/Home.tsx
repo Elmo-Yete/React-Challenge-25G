@@ -18,7 +18,7 @@ export default function Home() {
         console.error("Error en:", error);
       });
   }, []);
-  // console.log("esto es posts", posts);
+  console.log("esto es posts", posts);
   return (
     <>
       <header className="relative">

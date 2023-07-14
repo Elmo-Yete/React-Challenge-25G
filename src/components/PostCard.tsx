@@ -38,7 +38,7 @@ export default function PostCard(post: PostProps) {
                   <div className="flex pt-2.5">
                     <a>
                       <img
-                        src="https://randomuser.me/api/portraits/men/78.jpg"
+                        src="https://randomuser.me/api/portraits/men/78.jpg" //{post.post.userCreatorId.profilePicture}
                         alt="imagen de usuario"
                         className="rounded-full w-full"></img>
                     </a>

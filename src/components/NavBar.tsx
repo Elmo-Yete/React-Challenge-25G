@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function NavBar() {
+  function logOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+  }
+  const [menuVis, setMenuVi] = useState(false);
+  const toggleMenu = () => {
+    setMenuVi(!menuVis);
+  };
+
   const token = localStorage.getItem("token");
   return (
-    <nav className="bg-[#FFFFFF] flex w-auto px-20 gap-60 p-[6px] place-content-around ">
+    <nav className="bg-[#FFFFFF] flex w-auto px-20 gap-60 p-[6px] place-content-around relative">
       <div className="flex gap-1">
         <Link to="/">
           <img
@@ -54,7 +64,30 @@ export default function NavBar() {
               </a>
             </div>
             <div>
-              <a>
+              <a href="#" onClick={toggleMenu}>
+                {menuVis && (
+                  <div className="absolute top-full right-72 mt-2 w-40 bg-white z-10">
+                    <ul className="list-none p-0 m-0">
+                      <li className="py-2 px-4 border-b border-gray-300 flex flex-col font-semibold">
+                        User name
+                        <span className="font-light">@user1</span>
+                      </li>
+                      <li className="py-2 px-4 border-b border-gray-300">
+                        Dashboard
+                      </li>
+                      <Link to="/create-post">
+                        <li className="py-2 px-4 border-b border-gray-300">
+                          Create Post
+                        </li>
+                      </Link>
+                      <li className="py-2 px-4">
+                        <Link to="/" onClick={logOut}>
+                          Sign Out
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                )}
                 <img
                   src="../src/assets/meme.webp"
                   className="w-8 rounded-2xl"
@@ -64,7 +97,7 @@ export default function NavBar() {
           </>
         ) : (
           <>
-            <div className="pt-[0.2rem]">
+            <div className="pt-[0.4rem]">
               <Link
                 to="/Login"
                 className="m-7 text-black text-base hover:bg-slate-100 rounded-[3px] p-2  hover:text-blue-dev text hover:underline ">

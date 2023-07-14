@@ -34,11 +34,9 @@ export default function Login() {
         // console.log("response:", response);
         if (response?.data._id) {
           localStorage.setItem("id", response.data._id);
-          // ? const token = localStorage.getItem("token");
-          // ? localStorage.removeItem("token")
           navigate("/login");
         } else {
-          toast.warn("Usuario no encontrado");
+          toast.warn("El usuario no se creo");
         }
       })
       .catch(() => {
