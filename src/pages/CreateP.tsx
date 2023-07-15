@@ -17,10 +17,12 @@ interface PostData {
 export default function Create() {
   const [reactionsCount, setReactionsCount] = useState(0);
   const [tagsCount, setTagsCount] = useState();
+  // !
   function onSubmit(data: PostData) {
-    const userId = localStorage.getItem("id");
-    console.log(userId);
     const userToken = localStorage.getItem("token");
+    const payload = userToken.split(".")[1];
+    const idUser = JSON.parse(atob(payload)).id;
+    // console.log("esto es el id?", idUser);
     const currentDate = new Date();
     fetch("http://localhost:8080/post", {
       method: "POST",
@@ -29,7 +31,7 @@ export default function Create() {
         Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify({
-        userCreatorId: userId,
+        userCreatorId: idUser,
         title: data.title,
         content: data.content,
         image: data.image,

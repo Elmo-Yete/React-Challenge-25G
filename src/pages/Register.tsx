@@ -33,7 +33,7 @@ export default function Login() {
       .then((response) => {
         // console.log("response:", response);
         if (response?.data._id) {
-          localStorage.setItem("id", response.data._id);
+          localStorage.setItem("userId", response.data._id);
           navigate("/login");
         } else {
           toast.warn("El usuario no se creo");

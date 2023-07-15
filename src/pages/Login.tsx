@@ -28,7 +28,7 @@ export default function Login() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log("response:", response);
+        // console.log("response:", response);
         if (response?.data) {
           localStorage.setItem("token", response.data);
           navigate("/");
@@ -37,7 +37,7 @@ export default function Login() {
         }
       })
       .catch(() => {
-        toast.error("Error on fetch");
+        toast.error("Vuelva a intentarlo");
       });
   }
 

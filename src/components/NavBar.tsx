@@ -5,6 +5,7 @@ export default function NavBar() {
   function logOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("id");
+    localStorage.removeItem("postId");
   }
   const [menuVis, setMenuVi] = useState(false);
   const toggleMenu = () => {
