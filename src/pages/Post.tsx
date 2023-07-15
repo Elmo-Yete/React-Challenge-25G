@@ -1,7 +1,21 @@
 import NavBar from "../components/NavBar";
 import Leftaside from "../components/post-view/Left-aside";
 import UserCard from "../components/post-view/UserCard";
+import { useEffect, useState } from "react";
+import { getId } from "../components/PostCard";
 export default function Post() {
+  const [post, setPosts] = useState([]);
+  const postId = localStorage.getItem("postId");
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/post/${postId}`)
+      .then((response) => response.json())
+      .then((response) => setPosts(response.data))
+      .catch((error) => {
+        console.error("Error en:", error);
+      });
+  }, []);
+  // console.log("esto es el post filtrado por id", post);
   return (
     <>
       <nav>
@@ -12,13 +26,10 @@ export default function Post() {
           <Leftaside />
         </aside>
         <section className="flex bg-dev-to-card-color w-2/4">
-          <article>
+          <article className="pb-5">
             <header>
               <div>
-                <img
-                  src="https://res.cloudinary.com/practicaldev/image/fetch/s--eaqnr2Uy--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4p46s581l65x91ng6y2w.jpg"
-                  className="rounded-t-md"
-                />
+                <img src={post.image} className="rounded-t-md" />
               </div>
               <div className="flex px-7 pt-5">
                 <div className="w-[3rem] profile-picture">
@@ -37,54 +48,29 @@ export default function Post() {
                       AWS Community Services
                     </p>
                   </div>
-                  <p className="font-light">7 days ago</p>
+                  <p className="font-light">{post.date}</p>
                 </div>
               </div>
               <div className="flex flex-row px-7 pt-5 ">
                 <span className="flex w-7">
                   <img src="../src/assets/icons/red-Heart-Icon.svg" />
-                  <p>4</p>
+                  <p>{post.heartReactions}</p>
                 </span>
               </div>
               <h1 className="px-7 pt-5 font-bold text-5xl w-full">
-                #DEVDiscuss: Is Threads Truly Decentralized?
+                {post.title}
               </h1>
-              <div className="px-7 pt-5">
-                <a className="px-3">
-                  <span>#</span>Test1
+              {/* <div className="px-7 py-3">
+                <a className="pe-5" href="#">
+                  {post.tags[1]}
                 </a>
-                <a className="px-3">
-                  <span>#</span>Test1
+                <a className="pe-5" href="#">
+                  {post.tags[1]}
                 </a>
-                <a className="px-3">
-                  <span>#</span>Test1
-                </a>
-              </div>
+              </div> */}
             </header>
-            <div className="px-7 flex flex-col">
-              <h2 className="font-bold">
-                Youtube Script Generator [Refine Hackathon]
-              </h2>
-              <p className="flex-wrap text-justify">
-                Welcome to the DEV Showcase - a weekly thread where you can
-                share what you've been working on and get feedback and
-                encouragement from the DEV community. This is your chance to
-                show off your latest project, share a cool hack or technique
-                you've learned, or ask for advice and feedback from other
-                developers. Whether you're a seasoned developer or just starting
-                out, this is the place to connect with others and get inspired.
-                Here are a few questions to think about if you're stuck: What
-                have you been working on lately? What tools or resources have
-                you found helpful? Have you learned any new skills or techniques
-                recently? What challenges have you faced, and how can the
-                community help you overcome them? What are your goals for your
-                project or your career moving forward? Remember, this isn't a
-                competition or a challenge - it's just a space to share and
-                connect with others. So don't be shy! Share your work and get
-                feedback and encouragement from the DEV community. We're excited
-                to see what you've been working on, and to support you as you
-                continue to grow and develop your skills.
-              </p>
+            <div className="px-7 flex flex-col py-5">
+              <p className="flex-wrap text-justify">{post.content}</p>
             </div>
           </article>
         </section>

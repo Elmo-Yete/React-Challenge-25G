@@ -16,13 +16,17 @@ interface PostProps {
   };
   _id: string;
 }
+export function getId(post) {
+  const postId = post.post._id;
+  localStorage.setItem("postId", postId);
+}
 
 export default function PostCard(post: PostProps) {
   const isTag = post.post.tags;
   return (
     <>
       <section className="flex flex-row rounded-xl bg-dev-to-card-color mb-5">
-        <Link to="/Post">
+        <Link to="/Post" onClick={() => getId(post)}>
           <a className="ancor-card">
             <div className="img-top">
               <a href="#">

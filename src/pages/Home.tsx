@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [posts, setPosts] = useState<any>([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:8080/post")
@@ -18,7 +18,7 @@ export default function Home() {
         console.error("Error en:", error);
       });
   }, []);
-  console.log("esto es posts", posts);
+  // console.log("esto es posts", posts);
   return (
     <>
       <header className="relative">
@@ -30,7 +30,7 @@ export default function Home() {
         </aside>
         <section>
           <NavPills />
-          {posts.map((post: any, index) => (
+          {posts.map((post, index) => (
             <PostCard key={`index${index}`} post={post} />
           ))}
         </section>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import Hashtags from "../micro-components/Hashtags";
 interface PostData {
   userCreatorId: string;
   title: string;
@@ -15,6 +16,7 @@ interface PostData {
 
 export default function Create() {
   const [reactionsCount, setReactionsCount] = useState(0);
+  const [tagsCount, setTagsCount] = useState();
   function onSubmit(data: PostData) {
     const userId = localStorage.getItem("id");
     console.log(userId);
@@ -54,16 +56,16 @@ export default function Create() {
           <Link to="/">
             <img src="../src/assets/DevLogo.webp" className="w-12" />
           </Link>
-          <p className="ps-3 pt-1">Create Post</p>
+          <p className="ps-3 pt-2 font-semibold">Create Post</p>
         </div>
         <span></span>
         <Link to="/">
-          <a className="font-semibold ">X</a>
+          <a className="font-semibold text-2xl">X</a>
         </Link>
       </nav>
       <main className="bg-dev-background flex flex-col justify-start items-center ">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <header className=" bg-dev-to-card-color p-7 rounded-lg">
+          <header className=" bg-dev-to-card-color px-7 py-3 rounded-lg">
             <div className="input-img py-2">
               <input
                 type="text"
@@ -80,21 +82,29 @@ export default function Create() {
                 {...register("title")}
               />
             </div>
-            <div>
-              <input
-                type="text"
-                placeholder="Add up to 4 tags"
-                className="font-thin focus:outline-none focus:ring-0"
-                {...register("tags")}
-              />
-            </div>
-            <div>
-              <input
-                type="number"
-                placeholder="Time to read"
-                className="font-thin focus:outline-none focus:ring-0"
-                {...register("time")}
-              />
+            <div className="flex justify-around">
+              <div className="flex justify-start">
+                <input
+                  type="text"
+                  placeholder="Add up to 4 tags"
+                  className="font-thin focus:outline-none focus:ring-0"
+                  {...register("tags")}
+                />
+                <button
+                  className="bg-blue-dev/50 text-white p-1 rounded-xl"
+                  onClick={handleSubmit(setTagsCount)}>
+                  Add Tag
+                </button>
+              </div>
+              {tagsCount ? <Hashtags text="a" /> : <div></div>}
+              <div>
+                <input
+                  type="number"
+                  placeholder="Time to read"
+                  className="font-thin focus:outline-none focus:ring-0"
+                  {...register("time")}
+                />
+              </div>
             </div>
           </header>
           <section className="flex flex-row max-w-lg">
