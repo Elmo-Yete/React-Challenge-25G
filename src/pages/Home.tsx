@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
-
+  console.log(posts);
   useEffect(() => {
     fetch("http://localhost:8080/post")
       .then((response) => response.json())
@@ -18,14 +18,14 @@ export default function Home() {
         console.error("Error en:", error);
       });
   }, []);
-  console.log("estos son todos los posts", posts);
+
   return (
     <>
       <header className="relative">
         <NavBar props={posts} />
       </header>
-      <main className="flex columns-3 mx-[19.43rem] gap-3 p-5 bg-dev-background ">
-        <aside className="flex w-1/3 ">
+      <main className="flex columns-3 mx-[19.43rem] gap-3 p-5 bg-dev-background max-[1301px]:mx-[1rem] max-[720px]:p-0">
+        <aside className="flex w-1/3 max-[720px]:hidden max-[720px]:w-0">
           <LeftListing />
         </aside>
         <section>
@@ -34,7 +34,7 @@ export default function Home() {
             <PostCard key={`index${index}`} post={post} />
           ))}
         </section>
-        <aside className="flex w-1/3">
+        <aside className="flex w-[30rem] max-[1301px]:hidden">
           <RightListing />
         </aside>
       </main>

@@ -25,7 +25,7 @@ export default function PostCard(post: PostProps) {
   const isTag = post.post.tags;
   return (
     <>
-      <section className="flex flex-row rounded-xl bg-dev-to-card-color mb-5">
+      <section className="flex flex-row rounded-xl bg-dev-to-card-color mb-5 max-[1300px]:w-full">
         <Link to="/Post" onClick={() => getId(post)}>
           <a className="ancor-card">
             <div className="img-top">
@@ -42,7 +42,7 @@ export default function PostCard(post: PostProps) {
                   <div className="flex pt-2.5">
                     <a>
                       <img
-                        src="https://randomuser.me/api/portraits/men/78.jpg" //{post.post.userCreatorId.profilePicture}
+                        src={post.post.userCreatorId.profilePicture}
                         alt="imagen de usuario"
                         className="rounded-full w-full"></img>
                     </a>
@@ -50,7 +50,9 @@ export default function PostCard(post: PostProps) {
                 </div>
                 <div className=" gap-1 ps-2 mt-1 items-center user-creator">
                   <div className="flex">
-                    <p className="font-semibold text-sm pe-2">User Test 1</p>
+                    <p className="font-semibold text-sm pe-2">
+                      {post.post.userCreatorId.name}
+                    </p>
                     <p className="font-semibold text-sm ">
                       AWS Community Services
                     </p>
@@ -77,7 +79,7 @@ export default function PostCard(post: PostProps) {
                 </div>
                 <div className="flex ms-10 py-4 justify-between emojis-comments text-sm">
                   <div className="flex gap-5">
-                    <a href="#" className="emojis-comments__colection">
+                    <a href="#" className="emojis-comments__colection ">
                       <div className="emojis-comments__colection--emojis flex">
                         <span className="bg-slate-300  rounded-full p-1">
                           <img
@@ -85,19 +87,32 @@ export default function PostCard(post: PostProps) {
                             className="w-4"
                           />
                         </span>
-                        <span className="ps-3">{`${post.post.heartReactions} reactions`}</span>
+                        <span className="ps-3 flex">
+                          {post.post.heartReactions}
+                          <p className="ms-1">reactions</p>
+                        </span>
                       </div>
                     </a>
-                    <a className="emojis-comments__comments">
+                    <a className="emojis-comments__comments md:flex flex-wrap">
                       <div className="flex">
                         <span>💭</span>
-                        <p className="ps-2">23 comments</p>
+                        <p className="ms-1">
+                          23
+                          <span className="ms-1 max-[1550px]:hidden">
+                            comments
+                          </span>
+                        </p>
                       </div>
                     </a>
                   </div>
-                  <div>
-                    <small> {`${post.post.time} minutes to read`} </small>
-                    <a href="#">📒</a>
+                  <div className="flex">
+                    <p>{post.post.time}</p>
+                    <small className="max-[1640px]:hidden ms-1">
+                      minutes to read
+                    </small>
+                    <a href="#" className="ms-1">
+                      📒
+                    </a>
                   </div>
                 </div>
               </div>

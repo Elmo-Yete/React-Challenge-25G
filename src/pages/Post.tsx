@@ -4,9 +4,9 @@ import UserCard from "../components/post-view/UserCard";
 import { useEffect, useState } from "react";
 import { getId } from "../components/PostCard";
 
-const postId = localStorage.getItem("postId");
-console.log(postId);
 export default function Post() {
+  const postId = localStorage.getItem("postId");
+  console.log(postId);
   const [post, setPosts] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function Post() {
         console.error("Error en:", error);
       });
   }, []);
-  console.log("esto es el post filtrado por id", post);
+  // console.log("esto es el post filtrado por id", post);
   return (
     <>
       <nav>

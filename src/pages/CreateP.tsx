@@ -16,8 +16,19 @@ interface PostData {
 
 export default function Create() {
   const [reactionsCount, setReactionsCount] = useState(0);
-  const [tagsCount, setTagsCount] = useState();
-  // !
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
+
+  console.log(tags);
+  console.log(tagInput);
+
+  function tag() {
+    if (tagInput.trim() !== "") {
+      setTags([...tags, tagInput.trim()]);
+      setTagInput("");
+    }
+  }
+
   function onSubmit(data: PostData) {
     const userToken = localStorage.getItem("token");
     const payload = userToken.split(".")[1];
@@ -36,13 +47,19 @@ export default function Create() {
         content: data.content,
         image: data.image,
         time: data.time,
-        tags: data.tags,
+        tags: tags,
         date: currentDate.toISOString(),
         heartReactions: reactionsCount,
       }),
-    }).catch((error) => {
-      alert(error);
-    });
+    })
+      .then((response) => {
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   }
 
   const {
@@ -90,15 +107,25 @@ export default function Create() {
                   type="text"
                   placeholder="Add up to 4 tags"
                   className="font-thin focus:outline-none focus:ring-0"
+                  onChange={(e) => setTagInput(e.target.value)}
                   {...register("tags")}
                 />
                 <button
                   className="bg-blue-dev/50 text-white p-1 rounded-xl"
-                  onClick={handleSubmit(setTagsCount)}>
+                  onClick={tag}
+                  type="button">
                   Add Tag
                 </button>
               </div>
-              {tagsCount ? <Hashtags text="a" /> : <div></div>}
+              {tags ? (
+                <ul>
+                  {tags.map((tag, index) => (
+                    <li key={index}>{tag}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p></p>
+              )}
               <div>
                 <input
                   type="number"
@@ -142,7 +169,7 @@ export default function Create() {
           <article className=" bg-dev-background ">
             <section>
               <textarea
-                className="w-full h-96 font-light p-2 focus:outline-none focus:ring-0"
+                className="w-full h-96 font-light p-2 focus:outline-none focus:ring-0 "
                 {...register("content")}
                 placeholder="Write your post content here..."></textarea>
             </section>
