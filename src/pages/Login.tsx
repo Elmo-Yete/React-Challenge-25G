@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavBar from "../components/NavBar";
@@ -18,6 +18,7 @@ export default function Login() {
   } = useForm<LoginData>();
 
   function onSubmit(data: LoginData) {
+    console.log("esto es la data:", data.email);
     fetch("http://localhost:8080/auth", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -30,6 +31,7 @@ export default function Login() {
       .then((response) => {
         // console.log("response:", response);
         if (response?.data) {
+          localStorage.setItem("email", data.email);
           localStorage.setItem("token", response.data);
           navigate("/");
         } else {

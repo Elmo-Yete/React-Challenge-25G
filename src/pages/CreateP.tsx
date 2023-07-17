@@ -17,16 +17,10 @@ interface PostData {
 export default function Create() {
   const [reactionsCount, setReactionsCount] = useState(0);
   const [tags, setTags] = useState([]);
-  const [tagInput, setTagInput] = useState("");
 
-  console.log(tags);
-  console.log(tagInput);
-
-  function tag() {
-    if (tagInput.trim() !== "") {
-      setTags([...tags, tagInput.trim()]);
-      setTagInput("");
-    }
+  function addTag(data) {
+    console.log(data);
+    setTags([data.tags, ...tags]);
   }
 
   function onSubmit(data: PostData) {
@@ -102,30 +96,6 @@ export default function Create() {
               />
             </div>
             <div className="flex justify-around">
-              <div className="flex justify-start">
-                <input
-                  type="text"
-                  placeholder="Add up to 4 tags"
-                  className="font-thin focus:outline-none focus:ring-0"
-                  onChange={(e) => setTagInput(e.target.value)}
-                  {...register("tags")}
-                />
-                <button
-                  className="bg-blue-dev/50 text-white p-1 rounded-xl"
-                  onClick={tag}
-                  type="button">
-                  Add Tag
-                </button>
-              </div>
-              {tags ? (
-                <ul>
-                  {tags.map((tag, index) => (
-                    <li key={index}>{tag}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p></p>
-              )}
               <div>
                 <input
                   type="number"
@@ -178,6 +148,20 @@ export default function Create() {
             <button type="submit">Publish</button>
           </div>
         </form>
+        <div className="flex justify-start">
+          <input
+            type="text"
+            placeholder="Add up to 4 tags"
+            className="font-thin focus:outline-none focus:ring-0"
+            {...register("tags")}
+          />
+          <button
+            className="bg-blue-dev/50 text-white p-1 rounded-xl"
+            onClick={addTag}
+            type="button">
+            Add Tag
+          </button>
+        </div>
       </main>
     </>
   );

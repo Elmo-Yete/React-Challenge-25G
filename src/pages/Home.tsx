@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <>
       <header className="relative">
-        <NavBar props={posts} />
+        <NavBar posts={posts} />
       </header>
       <main className="flex columns-3 mx-[19.43rem] gap-3 p-5 bg-dev-background max-[1301px]:mx-[1rem] max-[720px]:p-0">
         <aside className="flex w-1/3 max-[720px]:hidden max-[720px]:w-0">
