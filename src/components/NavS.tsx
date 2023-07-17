@@ -2,27 +2,8 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import BurgerListing from "./BurgerListing";
 
-export default function NavBar({ posts }) {
-  const [searchText, setSearchText] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [showResults, setShowResults] = useState(false);
+export default function NavS() {
   const [user, setUser] = useState({});
-
-  useEffect(() => {
-    const filtered = posts.filter((post) =>
-      post.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setFilteredPosts(filtered);
-  }, [searchText, posts]);
-
-  const handleSearchChange = (event) => {
-    setSearchText(event.target.value);
-  };
-  const handleSearchClick = () => {
-    setShowResults(true);
-    // alert("si hago algo");
-  };
-
   const emailToPair = localStorage.getItem("email");
   useEffect(() => {
     fetch(`http://localhost:8080/name/${emailToPair}`, {})
@@ -85,9 +66,6 @@ export default function NavBar({ posts }) {
             type="text"
             placeholder="Search..."
             className="font-light text-sm placeholder:text-gray-700 w-full focus:outline-none focus:ring-0 "
-            value={searchText}
-            onChange={handleSearchChange}
-            onClick={handleSearchClick}
           />
           <span className=" text-black font-light text-base hover:bg-slate-100 hover:text-blue-800 cursor-pointer w-11  hover:ring[1px] hover:rounded-md">
             <img
@@ -95,20 +73,6 @@ export default function NavBar({ posts }) {
               className="w-7/12 ms-2 m-[.2rem]"
             />
           </span>
-          {filteredPosts.length > 0 && showResults && (
-            <div className="absolute top-14 left-96 bg-white border border-gray-300 rounded-md shadow-lg p-4 z-10">
-              <ul>
-                {filteredPosts.map((post) => (
-                  <li key={post.id}>{post.title}</li>
-                ))}
-              </ul>
-              <button
-                onClick={() => setShowResults(false)}
-                className="bg-red-300 p-1 rounded-full">
-                X
-              </button>
-            </div>
-          )}
         </div>
       </div>
       <div className="text-black flex">
@@ -147,7 +111,7 @@ export default function NavBar({ posts }) {
             <div>
               <a href="#" onClick={toggleMenu}>
                 {menuVis && (
-                  <div className="absolute top-full right-72 mt-2 w-40 bg-white z-10">
+                  <div className="absolute top-full right-80 mt-2 w-40 bg-white z-10">
                     <ul className="list-none p-0 m-0">
                       <li className="py-2 px-4 border-b border-gray-300 flex flex-col font-semibold">
                         {user.name}

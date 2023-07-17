@@ -1,4 +1,4 @@
-import NavBar from "../components/NavBar";
+import NavS from "../components/NavS";
 import Leftaside from "../components/post-view/Left-aside";
 import UserCard from "../components/post-view/UserCard";
 import { useEffect, useState } from "react";
@@ -23,8 +23,8 @@ export default function Post() {
   // console.log("esto es el post filtrado por id", post);
   return (
     <>
-      <nav>
-        <NavBar />
+      <nav className="relative">
+        <NavS />
       </nav>
       <main className="flex columns-3 bg-dev-background pt-5">
         <aside className="flex w-1/4 justify-end">
