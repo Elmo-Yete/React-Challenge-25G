@@ -6,7 +6,6 @@ export default function NavBar({ posts }) {
   const [searchText, setSearchText] = useState("");
   const [filteredPosts, setFilteredPosts] = useState([]);
   const [showResults, setShowResults] = useState(false);
-  const resultsRef = useRef(null);
 
   useEffect(() => {
     const filtered = posts.filter((post) =>
@@ -18,27 +17,10 @@ export default function NavBar({ posts }) {
   const handleSearchChange = (event) => {
     setSearchText(event.target.value);
   };
-
   const handleSearchClick = () => {
     setShowResults(true);
+    // alert("si hago algo");
   };
-
-  const handleCloseClick = () => {
-    setShowResults(false);
-  };
-
-  const handleDocumentClick = (event) => {
-    if (resultsRef.current && !resultsRef.current.contains(event.target)) {
-      setShowResults(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleDocumentClick);
-    return () => {
-      document.removeEventListener("click", handleDocumentClick);
-    };
-  }, []);
 
   const emailToPair = localStorage.getItem("email");
   useEffect(() => {
@@ -99,15 +81,14 @@ export default function NavBar({ posts }) {
             alt="DevTo"
           />
         </Link>
-        <div
-          className="border rounded-md w-64 max-w-xs h-7 my-1 pl-1 hover:border-gray-400 flex justify-between max-[710px]:hidden"
-          onClick={handleSearchClick}>
+        <div className="border rounded-md w-64 max-w-xs h-7 my-1 pl-1 hover:border-gray-400 flex justify-between max-[710px]:hidden">
           <input
             type="text"
             placeholder="Search..."
             className="font-light text-sm placeholder:text-gray-700 w-full focus:outline-none focus:ring-0 "
             value={searchText}
             onChange={handleSearchChange}
+            onClick={handleSearchClick}
           />
           <span className=" text-black font-light text-base hover:bg-slate-100 hover:text-blue-800 cursor-pointer w-11  hover:ring[1px] hover:rounded-md">
             <img
@@ -115,24 +96,18 @@ export default function NavBar({ posts }) {
               className="w-7/12 ms-2 m-[.2rem]"
             />
           </span>
-          {showResults && (
-            <div
-              ref={resultsRef}
-              className="absolute top-10 left-0 bg-white border border-gray-300 rounded-md shadow-lg p-4 z-10">
+          {filteredPosts.length > 0 && showResults && (
+            <div className="absolute top-14 left-96 bg-white border border-gray-300 rounded-md shadow-lg p-4 z-10">
+              <ul>
+                {filteredPosts.map((post) => (
+                  <li key={post.id}>{post.title}</li>
+                ))}
+              </ul>
               <button
-                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-                onClick={handleCloseClick}>
+                onClick={() => setShowResults(false)}
+                className="bg-red-300 p-1 rounded-full">
                 X
               </button>
-              {filteredPosts.length > 0 ? (
-                <ul>
-                  {filteredPosts.map((post) => (
-                    <li key={post.id}>{post.title}</li>
-                  ))}
-                </ul>
-              ) : (
-                <p>No se encontraron resultados</p>
-              )}
             </div>
           )}
         </div>
