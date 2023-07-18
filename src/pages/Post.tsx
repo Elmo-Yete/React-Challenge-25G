@@ -1,6 +1,5 @@
 import NavS from "../components/NavS";
 import Leftaside from "../components/post-view/Left-aside";
-import UserCard from "../components/post-view/UserCard";
 import { useEffect, useState } from "react";
 
 export default function Post() {
