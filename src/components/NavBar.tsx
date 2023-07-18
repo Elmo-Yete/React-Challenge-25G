@@ -36,7 +36,7 @@ export default function NavBar({ posts }) {
         alert(error);
       });
   }, []);
-  console.log(user);
+  // console.log(user);
 
   function logOut() {
     localStorage.removeItem("token");
@@ -63,7 +63,7 @@ export default function NavBar({ posts }) {
             onClick={toogleBurger}
             className="hidden max-[720px]:flex">
             {burger && (
-              <div className="absolute end-0-full top-10 w-1/2 bg-white z-10 bg-scroll">
+              <div className="absolute end-0-full top-10 w-1/2 bg-white z-10 bg-scroll max-[720px]:start-0">
                 <BurgerListing />
               </div>
             )}
@@ -99,7 +99,7 @@ export default function NavBar({ posts }) {
             <div className="absolute top-14 left-96 bg-white border border-gray-300 rounded-md shadow-lg p-4 z-10">
               <ul>
                 {filteredPosts.map((post) => (
-                  <li key={post.id}>{post.title}</li>
+                  <li>{post.title}</li>
                 ))}
               </ul>
               <button

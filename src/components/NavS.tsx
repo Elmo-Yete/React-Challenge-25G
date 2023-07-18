@@ -17,7 +17,7 @@ export default function NavS() {
         alert(error);
       });
   }, []);
-  console.log(user);
+  // console.log(user);
 
   function logOut() {
     localStorage.removeItem("token");

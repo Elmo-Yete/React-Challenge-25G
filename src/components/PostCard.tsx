@@ -65,17 +65,13 @@ export default function PostCard(post: PostProps) {
                   {post.post.title}
                 </h2>
                 <div className="flex gap-5 ms-10 py-1 post-tags text-sm">
-                  {isTag ? (
-                    <>
-                      <a className="">{post.post.tags[0]}</a>
-                      <a className="">{post.post.tags[1]}</a>
-                      <a className="">{post.post.tags[2]}</a>
-                    </>
-                  ) : (
-                    <>
-                      <div></div>
-                    </>
-                  )}
+                  {isTag.map((tagToShow) => {
+                    return (
+                      <a className="h-[25px] text-[14px] flex my-5 hover:bg-yellow-100 cursor-pointer">
+                        #{tagToShow}
+                      </a>
+                    );
+                  })}
                 </div>
                 <div className="flex ms-10 py-4 justify-between emojis-comments text-sm">
                   <div className="flex gap-5">

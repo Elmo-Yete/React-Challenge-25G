@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import NavS from "../components/NavS";
 
 interface LoginData {
   email: string;
@@ -45,7 +46,7 @@ export default function Login() {
 
   return (
     <>
-      <NavBar />
+      <NavS />
       <main className="bg-dev-background min-h-screen flex justify-center items-center">
         <ToastContainer
           position="top-center"

@@ -74,16 +74,16 @@ export default function LeftListing() {
       <div className="fourth-list py-5">
         <h3>Popular Tags</h3>
         <div className=" h-36 overflow-auto w-48">
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
-          <Hashtags text="#test1" />
+          <Hashtags text="#javascript" />
+          <Hashtags text="#testing" />
+          <Hashtags text="#dev" />
+          <Hashtags text="#frontend" />
+          <Hashtags text="#tech" />
+          <Hashtags text="#memes" />
+          <Hashtags text="#opensource" />
+          <Hashtags text="#devops" />
+          <Hashtags text="#begginers" />
+          <Hashtags text="#react" />
         </div>
       </div>
       <div className="flex flex-col justify-between bg-white w-48 p-3 rounded-lg">

@@ -7,6 +7,8 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Post from "./pages/Post";
 import Create from "./pages/CreateP";
+import Relevant from "./pages/Relevant";
+import Latest from "./pages/Latest";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
   {
     path: "/post",
     element: <Post />,
+  },
+  {
+    path: "/relevant",
+    element: <Relevant />,
+  },
+  {
+    path: "/latest",
+    element: <Latest />,
   },
 ]);
 

@@ -9,25 +9,48 @@ interface PostData {
   content: string;
   image: string;
   time: number;
-  tags: [string];
+  tags: string;
   date: string;
   heartReactions: number;
 }
 
 export default function Create() {
-  const [reactionsCount, setReactionsCount] = useState(0);
-  const [tags, setTags] = useState([]);
+  const [tagsTo, setTags] = useState<PostData[]>([]);
+  const [tag, setTag] = useState("");
 
-  function addTag(data) {
-    console.log(data);
-    setTags([data.tags, ...tags]);
+  function onAddItem() {
+    if (tag) {
+      const tagInput: PostData = {
+        tags: tag,
+      };
+      setTags([tagInput, ...tagsTo]);
+      console.log("tags", tagsTo);
+      setTag("");
+    } else {
+      alert("Falta llenar un campo");
+    }
+  }
+
+  function onEnter(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter") {
+      onAddItem();
+    }
+  }
+
+  function onDelete(indexToDelete: number) {
+    tagsTo.splice(indexToDelete, 1);
+    setTags([...tagsTo]);
+  }
+
+  function empty() {
+    setTags([]);
   }
 
   function onSubmit(data: PostData) {
+    const myTags = tagsTo.map((item) => item.tags);
     const userToken = localStorage.getItem("token");
     const payload = userToken.split(".")[1];
     const idUser = JSON.parse(atob(payload)).id;
-    // console.log("esto es el id?", idUser);
     const currentDate = new Date();
     fetch("http://localhost:8080/post", {
       method: "POST",
@@ -41,15 +64,13 @@ export default function Create() {
         content: data.content,
         image: data.image,
         time: data.time,
-        tags: tags,
+        tags: myTags,
         date: currentDate.toISOString(),
-        heartReactions: reactionsCount,
+        heartReactions: 0,
       }),
     })
       .then((response) => {
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 1000);
+        window.location.href = "/";
       })
       .catch((error) => {
         alert(error);
@@ -153,14 +174,32 @@ export default function Create() {
             type="text"
             placeholder="Add up to 4 tags"
             className="font-thin focus:outline-none focus:ring-0"
-            {...register("tags")}
+            onKeyUp={onEnter}
+            onChange={(event) => setTag(event.target.value)}
+            value={tag}
           />
           <button
             className="bg-blue-dev/50 text-white p-1 rounded-xl"
-            onClick={addTag}
+            onClick={onAddItem}
             type="button">
             Add Tag
           </button>
+          {tagsTo.map((tagToShow, index) => {
+            return (
+              <div
+                key={`tag-${index}`}
+                className="flex justify-center items-center gap-2 px-2 py-2 max-w-[100px] max-h-[34px] bg-blue-800 text-[#fff]">
+                <p className="h-[18px] text-[14px] flex justify-center items-center">
+                  #{tagToShow.tags}
+                </p>
+                <button
+                  onClick={() => onDelete(index)}
+                  className=" text-[2a2a2a] text-[20px] flex justify-center items-start cursor-pointer">
+                  x
+                </button>
+              </div>
+            );
+          })}
         </div>
       </main>
     </>
