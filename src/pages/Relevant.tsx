@@ -12,6 +12,9 @@ interface PostData {
   date: string;
   heartReactions: number;
 }
+interface PostCardProps {
+  post: PostData;
+}
 export default function Relevant() {
   const [posts, setPosts] = useState([]);
   console.log(posts);
@@ -23,7 +26,6 @@ export default function Relevant() {
         console.error("Error en:", error);
       });
   }, []);
-  console.log(posts);
   return (
     <>
       <header className="relative">
