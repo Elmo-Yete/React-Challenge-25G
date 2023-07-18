@@ -29,7 +29,7 @@ export default function Relevant() {
       <header className="relative">
         <NavS />
       </header>
-      <main className="items-center">
+      <main className="flex flex-col items-center">
         {posts
           .sort((a, b) => a.numero - b.numero)
           .map((post, index) => (
